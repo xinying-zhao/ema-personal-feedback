@@ -1,0 +1,47 @@
+[
+  {
+    "label": "全部天汇总",
+    "value": "all",
+    "file": "web_chart_hourly_all.png"
+  },
+  {
+    "label": "04-12",
+    "value": "04-12",
+    "file": "web_chart_hourly_0412.png"
+  },
+  {
+    "label": "04-13",
+    "value": "04-13",
+    "file": "web_chart_hourly_0413.png"
+  },
+  {
+    "label": "04-14",
+    "value": "04-14",
+    "file": "web_chart_hourly_0414.png"
+  },
+  {
+    "label": "04-15",
+    "value": "04-15",
+    "file": "web_chart_hourly_0415.png"
+  },
+  {
+    "label": "04-16",
+    "value": "04-16",
+    "file": "web_chart_hourly_0416.png"
+  },
+  {
+    "label": "04-17",
+    "value": "04-17",
+    "file": "web_chart_hourly_0417.png"
+  },
+  {
+    "label": "04-18",
+    "value": "04-18",
+    "file": "web_chart_hourly_0418.png"
+  },
+  {
+    "label": "04-19",
+    "value": "04-19",
+    "file": "web_chart_hourly_0419.png"
+  }
+]

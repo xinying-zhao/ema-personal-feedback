@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GAD033 生理-焦虑关联分析（网页版）</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --sub: #64748b;
+      --line: #e2e8f0;
+      --blue: #4f7bff;
+      --teal: #14b8a6;
+      --shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .container { width: min(1080px, 100% - 24px); margin: 0 auto; padding: 20px 0 34px; }
+    .hero {
+      background: linear-gradient(140deg, #eef4ff, #ffffff 56%, #e7fff7);
+      border: 1px solid #dce8ff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .title { margin: 0 0 8px; font-size: clamp(22px, 3vw, 30px); }
+    .sub { margin: 0; color: var(--sub); line-height: 1.65; }
+    .summary-bar {
+      margin-top: 12px;
+      background: linear-gradient(90deg, #1d4ed8, #2563eb 45%, #0ea5a5 100%);
+      color: #eff6ff;
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      font-size: 13px;
+      line-height: 1.6;
+      letter-spacing: 0.2px;
+    }
+    .summary-bar b {
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .section { margin-top: 14px; }
+    .figure-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      margin-top: 12px;
+    }
+    .figure-title { margin: 0 0 10px; font-size: clamp(17px, 2.2vw, 22px); }
+    .img-wrap {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px;
+      background: #fff;
+    }
+    .img { width: 100%; height: auto; display: block; border-radius: 8px; }
+    .caption {
+      margin: 10px 2px 0;
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 1.65;
+      padding: 10px 12px;
+      background: #f8fbff;
+      border: 1px solid #dbeafe;
+      border-radius: 10px;
+    }
+    .strong { color: #1e3a8a; font-weight: 700; }
+    .control-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .control-row label {
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .control-row select {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 14px;
+      background: #fff;
+      color: var(--ink);
+    }
+    @media (min-width: 960px) {
+      .figure-card { padding: 16px 18px; }
+      .caption { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1 class="title">GAD033 生理数据与焦虑关联分析</h1>
+      <p class="sub">本页聚焦“焦虑评分与生理信号”的关系。完成情况仅作起始说明，后续以生理关联图为主。所有结论均为观察性结果，不作诊断或因果判断。</p>
+      <div class="summary-bar">
+        <b>本周期快速总结</b>：研究计划完成率 <b>12.5%</b>（6/48），生理匹配 <b>100%</b>（6/6，±30分钟），焦虑均值 <b>0.83/10</b>。以下图表重点展示“焦虑水平与生理指标”的关联模式。
+      </div>
+    </header>
+
+    <section class="section">
+      <article class="figure-card">
+        <h2 class="figure-title">图1｜HAMA量表结果（堆叠图：总分与因子分）</h2>
+        <div class="img-wrap">
+          <img class="img" src="./gad033_report_assets/web_chart_hama_factors.png" alt="HAMA量表总分与因子分" />
+        </div>
+        <p class="caption">筛选期 HAMA 总分为 11 分，其中心理性焦虑因子 2 分、躯体性焦虑因子 9 分。<span class="strong">躯体因子相对更突出</span>，可重点关注胸闷/气短、心悸、出汗、胃肠不适、肌肉紧张、头晕等身体信号在日常中的出现时点。</p>
+      </article>
+
+      <article class="figure-card">
+        <h2 class="figure-title">图2｜EMA问卷：焦虑与环境/同伴/活动关系</h2>
+        <div class="img-wrap">
+          <img class="img" src="./gad033_report_assets/web_chart_ema_context.png" alt="EMA情境与焦虑关系图" />
+        </div>
+        <p class="caption">EMA数据显示，焦虑评分会随所处环境、身边同伴和正在进行的活动而变化。<span class="strong">这提示焦虑并非固定水平，而是与当下情境密切相关</span>；后续可继续观察“哪些场景更容易升高、哪些场景更稳定”。</p>
+      </article>
+
+      <article class="figure-card">
+        <h2 class="figure-title">图3｜焦虑评分与呼吸率均值同窗变化</h2>
+        <div class="img-wrap">
+          <img class="img" src="./gad033_report_assets/web_chart_anxiety_br.png" alt="焦虑与呼吸率同窗变化图" />
+        </div>
+        <p class="caption">在问卷填写前后30分钟窗口内，焦虑由0分上升至2-3分时，呼吸率均值也呈上浮趋势。<span class="strong">呼吸节律可能是较早可感知的身体线索</span>。</p>
+      </article>
+
+      <article class="figure-card">
+        <h2 class="figure-title">图4｜焦虑评分与心率均值同窗变化</h2>
+        <div class="img-wrap">
+          <img class="img" src="./gad033_report_assets/web_chart_anxiety_hr.png" alt="焦虑与心率同窗变化图" />
+        </div>
+        <p class="caption">在EMA窗口中，焦虑较高时点（如 4/16 晚、4/19 上午）对应心率均值相对更高。<span class="strong">提示主观紧张与心率变化在部分时点同步出现</span>。</p>
+      </article>
+
+      <article class="figure-card">
+        <h2 class="figure-title">图5｜心率变异性（HRV）与焦虑水平关联</h2>
+        <div class="img-wrap">
+          <img class="img" src="./gad033_report_assets/web_chart_hrv_anxiety.png" alt="HRV与焦虑关联图" />
+        </div>
+        <p class="caption">该图将 EMA 前5分钟 SDNN 与同一时点焦虑评分放在同一时间轴比较。<span class="strong">若后续持续出现“焦虑升高而SDNN下降”</span>，可作为自主神经紧张状态的重点观察线索。</p>
+      </article>
+
+      <article class="figure-card">
+        <h2 class="figure-title">图6｜植物神经功能小时级统计（可切换每天/全部）</h2>
+        <div class="control-row">
+          <label for="daySelect">统计范围：</label>
+          <select id="daySelect">
+            <option value="all">全部天汇总</option>
+            <option value="04-12">04-12</option>
+            <option value="04-13">04-13</option>
+            <option value="04-14">04-14</option>
+            <option value="04-15">04-15</option>
+            <option value="04-16">04-16</option>
+            <option value="04-17">04-17</option>
+            <option value="04-18">04-18</option>
+            <option value="04-19">04-19</option>
+          </select>
+        </div>
+        <div class="img-wrap">
+          <img id="hourlyChart" class="img" src="./gad033_report_assets/web_chart_hourly_all.png" alt="植物神经功能小时级统计图" />
+        </div>
+        <p class="caption">每条曲线都按<span class="strong">每小时1个点</span>统计：上图图例包含心率与呼吸率，下图图例包含SDNN与RMSSD（若该小时有数据则计算）。可切换“每天”或“全部天汇总”进行查看，便于做每日自主神经功能对比。</p>
+      </article>
+
+      <article class="figure-card">
+        <h2 class="figure-title">图7｜植物神经功能前4天 vs 后4天（3个并列小图）</h2>
+        <div class="img-wrap">
+          <img class="img" src="./gad033_report_assets/web_chart_autonomic_first4_last4.png" alt="前4天后4天自主神经指标对比图" />
+        </div>
+        <p class="caption">该图按“前4天 vs 后4天”比较心率、呼吸率与焦虑评分，柱顶误差棒为<span class="strong">标准差（SD）</span>，用于展示天与天之间波动。可据此观察后半程是否出现更稳定（SD变小）或负荷增加（均值上升且SD变大）的趋势。</p>
+      </article>
+    </section>
+  </main>
+  <script>
+    (function () {
+      const map = {
+        "all": "./gad033_report_assets/web_chart_hourly_all.png",
+        "04-12": "./gad033_report_assets/web_chart_hourly_0412.png",
+        "04-13": "./gad033_report_assets/web_chart_hourly_0413.png",
+        "04-14": "./gad033_report_assets/web_chart_hourly_0414.png",
+        "04-15": "./gad033_report_assets/web_chart_hourly_0415.png",
+        "04-16": "./gad033_report_assets/web_chart_hourly_0416.png",
+        "04-17": "./gad033_report_assets/web_chart_hourly_0417.png",
+        "04-18": "./gad033_report_assets/web_chart_hourly_0418.png",
+        "04-19": "./gad033_report_assets/web_chart_hourly_0419.png"
+      };
+      const sel = document.getElementById("daySelect");
+      const img = document.getElementById("hourlyChart");
+      sel.addEventListener("change", function () {
+        img.src = map[this.value] || map["all"];
+      });
+    })();
+  </script>
+</body>
+</html>
