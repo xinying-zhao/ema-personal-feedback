@@ -6,15 +6,16 @@
   <title>GAD033 生理-焦虑关联分析（网页版）</title>
   <style>
     :root {
-      --bg: #f4f7fb;
-      --card: #ffffff;
-      --ink: #0f172a;
-      --sub: #64748b;
-      --line: #e2e8f0;
-      --blue: #4f7bff;
-      --teal: #14b8a6;
-      --shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-      --radius: 16px;
+      --bg: #F9FAFB;
+      --card: #FFFFFF;
+      --ink: #111827;
+      --ink-light: #4B5563;
+      --sub: #6B7280;
+      --line: #E5E7EB;
+      --accent: #0D9488;
+      --accent-light: #F0FDFA;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     }
     * { box-sizing: border-box; }
     body {
@@ -22,93 +23,160 @@
       font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
       background: var(--bg);
       color: var(--ink);
+      -webkit-font-smoothing: antialiased;
     }
-    .container { width: min(1080px, 100% - 24px); margin: 0 auto; padding: 20px 0 34px; }
+    .container { width: min(900px, 100% - 32px); margin: 40px auto; padding-bottom: 60px; }
+    
+    /* Hero Section */
     .hero {
-      background: linear-gradient(140deg, #eef4ff, #ffffff 56%, #e7fff7);
-      border: 1px solid #dce8ff;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: var(--shadow);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
     }
-    .title { margin: 0 0 8px; font-size: clamp(22px, 3vw, 30px); }
-    .sub { margin: 0; color: var(--sub); line-height: 1.65; }
+    .disclaimer {
+      display: inline-block;
+      font-size: 12px;
+      color: var(--sub);
+      background: #F3F4F6;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+    .title { 
+      margin: 0 0 12px; 
+      font-size: clamp(24px, 4vw, 32px); 
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-wrap: pretty;
+    }
+    .sub { 
+      margin: 0 0 24px; 
+      color: var(--ink-light); 
+      line-height: 1.6; 
+      font-size: 15px;
+      text-wrap: pretty;
+    }
+    
+    /* Summary Bar */
     .summary-bar {
-      margin-top: 12px;
-      background: linear-gradient(90deg, #1d4ed8, #2563eb 45%, #0ea5a5 100%);
-      color: #eff6ff;
-      border-radius: 14px;
-      padding: 10px 14px;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      font-size: 13px;
+      background: var(--accent-light);
+      color: #0F766E;
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 14px;
       line-height: 1.6;
-      letter-spacing: 0.2px;
+      border: 1px solid #CCFBF1;
     }
     .summary-bar b {
-      color: #ffffff;
-      font-weight: 700;
+      color: #0F766E;
+      font-weight: 600;
     }
-    .section { margin-top: 14px; }
+
+    /* Cards */
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
     .figure-card {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
+      padding: 24px;
       box-shadow: var(--shadow);
-      padding: 14px;
-      margin-top: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .figure-title { margin: 0 0 10px; font-size: clamp(17px, 2.2vw, 22px); }
+    .figure-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    }
+    .figure-title { 
+      margin: 0 0 20px; 
+      font-size: 18px; 
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
     .img-wrap {
+      margin-bottom: 16px;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 8px;
-      background: #fff;
     }
-    .img { width: 100%; height: auto; display: block; border-radius: 8px; }
+    .img { 
+      width: 100%; 
+      height: auto; 
+      display: block; 
+      border-radius: 4px; 
+      transition: opacity 0.3s ease-in-out;
+    }
+    .img.fade-out {
+      opacity: 0.5;
+    }
     .caption {
-      margin: 10px 2px 0;
-      color: var(--sub);
-      font-size: 13px;
-      line-height: 1.65;
-      padding: 10px 12px;
-      background: #f8fbff;
-      border: 1px solid #dbeafe;
-      border-radius: 10px;
+      margin: 0;
+      color: var(--ink-light);
+      font-size: 14px;
+      line-height: 1.6;
+      text-wrap: pretty;
+      padding-left: 14px;
+      border-left: 3px solid var(--line);
     }
-    .strong { color: #1e3a8a; font-weight: 700; }
+    .strong { 
+      color: var(--ink); 
+      font-weight: 600; 
+    }
+    
+    /* Controls */
     .control-row {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
+      margin-bottom: 16px;
     }
     .control-row label {
-      font-size: 13px;
-      color: var(--sub);
+      font-size: 14px;
+      color: var(--ink-light);
     }
     .control-row select {
       border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 8px 10px;
+      border-radius: 6px;
+      padding: 8px 12px;
       font-size: 14px;
-      background: #fff;
+      background: var(--bg);
       color: var(--ink);
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
     }
-    @media (min-width: 960px) {
-      .figure-card { padding: 16px 18px; }
-      .caption { font-size: 14px; }
+    .control-row select:hover {
+      border-color: var(--sub);
+    }
+    .control-row select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent-light);
+    }
+
+    @media (max-width: 640px) {
+      .figure-card { padding: 16px; }
+      .caption { font-size: 13px; }
     }
   </style>
 </head>
 <body>
   <main class="container">
     <header class="hero">
+      <div class="disclaimer">观察性结果 · 不作临床诊断</div>
       <h1 class="title">GAD033 生理数据与焦虑关联分析</h1>
-      <p class="sub">本页聚焦“焦虑评分与生理信号”的关系。完成情况仅作起始说明，后续以生理关联图为主。所有结论均为观察性结果，不作诊断或因果判断。</p>
+      <p class="sub">本页聚焦「焦虑评分与生理信号」的关系。完成情况仅作起始说明，后续以生理关联图为主。</p>
       <div class="summary-bar">
-        <b>本周期快速总结</b>：研究计划完成率 <b>12.5%</b>（6/48），生理匹配 <b>100%</b>（6/6，±30分钟），焦虑均值 <b>0.83/10</b>。以下图表重点展示“焦虑水平与生理指标”的关联模式。
+        <b>本周期快速总结</b>：研究计划完成率 <b>12.5%</b>（6/48），生理匹配 <b>100%</b>（6/6，±30分钟），焦虑均值 <b>0.83/10</b>。以下图表重点展示「焦虑水平与生理指标」的关联模式。
       </div>
     </header>
 
@@ -129,7 +197,7 @@
             <img class="img" src="./gad033_report_assets/web_chart_ema_context.png" alt="EMA情境与焦虑关系图" />
           </picture>
         </div>
-        <p class="caption">EMA数据显示，焦虑评分会随所处环境、身边同伴和正在进行的活动而变化。<span class="strong">这提示焦虑并非固定水平，而是与当下情境密切相关</span>；后续可继续观察“哪些场景更容易升高、哪些场景更稳定”。</p>
+        <p class="caption">EMA数据显示，焦虑评分会随所处环境、身边同伴和正在进行的活动而变化。<span class="strong">这提示焦虑并非固定水平，而是与当下情境密切相关</span>；后续可继续观察「哪些场景更容易升高、哪些场景更稳定」。</p>
       </article>
 
       <article class="figure-card">
@@ -153,11 +221,11 @@
         <div class="img-wrap">
           <img class="img" src="./gad033_report_assets/web_chart_hrv_anxiety.png" alt="HRV与焦虑关联图" />
         </div>
-        <p class="caption">该图将 EMA 前5分钟 SDNN 与同一时点焦虑评分放在同一时间轴比较。<span class="strong">若后续持续出现“焦虑升高而SDNN下降”</span>，可作为自主神经紧张状态的重点观察线索。</p>
+        <p class="caption">该图将 EMA 前5分钟 SDNN 与同一时点焦虑评分放在同一时间轴比较。<span class="strong">若后续持续出现「焦虑升高而SDNN下降」</span>，可作为自主神经紧张状态的重点观察线索。</p>
       </article>
 
       <article class="figure-card">
-        <h2 class="figure-title">图6｜植物神经功能小时级统计（可切换每天/全部）</h2>
+        <h2 class="figure-title">图6｜植物神经功能小时级统计</h2>
         <div class="control-row">
           <label for="daySelect">统计范围：</label>
           <select id="daySelect">
@@ -175,38 +243,55 @@
         <div class="img-wrap">
           <img id="hourlyChart" class="img" src="./gad033_report_assets/web_chart_hourly_all.png" alt="植物神经功能小时级统计图" />
         </div>
-        <p class="caption">每条曲线都按<span class="strong">每小时1个点</span>统计：上图图例包含心率与呼吸率，下图图例包含SDNN与RMSSD（若该小时有数据则计算）。可切换“每天”或“全部天汇总”进行查看，便于做每日自主神经功能对比。</p>
+        <p class="caption">每条曲线都按<span class="strong">每小时1个点</span>统计：上图图例包含心率与呼吸率，下图图例包含SDNN与RMSSD（若该小时有数据则计算）。可切换「每天」或「全部天汇总」进行查看，便于做每日自主神经功能对比。</p>
       </article>
 
       <article class="figure-card">
-        <h2 class="figure-title">图7｜植物神经功能前4天 vs 后4天（3个并列小图）</h2>
+        <h2 class="figure-title">图7｜植物神经功能前4天 vs 后4天</h2>
         <div class="img-wrap">
           <picture>
             <source media="(max-width: 900px)" srcset="./gad033_report_assets/web_chart_autonomic_first4_last4_mobile.png" />
             <img class="img" src="./gad033_report_assets/web_chart_autonomic_first4_last4.png" alt="前4天后4天自主神经指标对比图" />
           </picture>
         </div>
-        <p class="caption">该图按“前4天 vs 后4天”比较心率、呼吸率与焦虑评分，柱顶误差棒为<span class="strong">标准差（SD）</span>，用于展示天与天之间波动。可据此观察后半程是否出现更稳定（SD变小）或负荷增加（均值上升且SD变大）的趋势。</p>
+        <p class="caption">该图按「前4天 vs 后4天」比较心率、呼吸率与焦虑评分，柱顶误差棒为<span class="strong">标准差（SD）</span>，用于展示天与天之间波动。可据此观察后半程是否出现更稳定（SD变小）或负荷增加（均值上升且SD变大）的趋势。</p>
       </article>
     </section>
   </main>
   <script>
     (function () {
+      // Create a function to wrap map paths to ensure they work in GitHub Pages
+      const getAssetPath = (filename) => {
+        // If the current URL has a path (like /GAD033-Report/), use relative path
+        // This works for both local file:// and GitHub Pages
+        return `./gad033_report_assets/${filename}`;
+      };
+      
       const map = {
-        "all": "./gad033_report_assets/web_chart_hourly_all.png",
-        "04-12": "./gad033_report_assets/web_chart_hourly_0412.png",
-        "04-13": "./gad033_report_assets/web_chart_hourly_0413.png",
-        "04-14": "./gad033_report_assets/web_chart_hourly_0414.png",
-        "04-15": "./gad033_report_assets/web_chart_hourly_0415.png",
-        "04-16": "./gad033_report_assets/web_chart_hourly_0416.png",
-        "04-17": "./gad033_report_assets/web_chart_hourly_0417.png",
-        "04-18": "./gad033_report_assets/web_chart_hourly_0418.png",
-        "04-19": "./gad033_report_assets/web_chart_hourly_0419.png"
+        "all": getAssetPath("web_chart_hourly_all.png"),
+        "04-12": getAssetPath("web_chart_hourly_0412.png"),
+        "04-13": getAssetPath("web_chart_hourly_0413.png"),
+        "04-14": getAssetPath("web_chart_hourly_0414.png"),
+        "04-15": getAssetPath("web_chart_hourly_0415.png"),
+        "04-16": getAssetPath("web_chart_hourly_0416.png"),
+        "04-17": getAssetPath("web_chart_hourly_0417.png"),
+        "04-18": getAssetPath("web_chart_hourly_0418.png"),
+        "04-19": getAssetPath("web_chart_hourly_0419.png")
       };
       const sel = document.getElementById("daySelect");
       const img = document.getElementById("hourlyChart");
       sel.addEventListener("change", function () {
-        img.src = map[this.value] || map["all"];
+        const targetSrc = map[this.value] || map["all"];
+        // In GitHub Pages, the full URL will include the domain, so we need a more robust check
+        if (img.src.indexOf(targetSrc.replace('./', '')) !== -1) return;
+        
+        img.classList.add("fade-out");
+        setTimeout(() => {
+          img.src = targetSrc;
+          img.onload = () => {
+            img.classList.remove("fade-out");
+          };
+        }, 150);
       });
     })();
   </script>
